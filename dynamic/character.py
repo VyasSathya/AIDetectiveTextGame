@@ -1,6 +1,9 @@
 # character.py
 
-import openai
+from openai import OpenAI
+import os
+
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
 class Character:
     def __init__(self, data):
@@ -63,18 +66,16 @@ Current Scenario:
 
 The player asks: "{question}"
 
-Respond in first person, reflecting your character's personality, goals, and the information you have. Be consistent with your alibi, motives, and knowledge of events. If you are the murderer, you may choose to subtly deceive the player. Provide detailed and natural responses.
+Respond in first person, reflecting your character's personality, goals, and the information you have. Be consistent with your alibi, motives, and knowledge of events. If you are the murderer, you may choose to subtly deceive the player. Provide detailed and natural responses, but keep it concise (2-3 sentences).
 """
 
         # Generate response using OpenAI API
         try:
-            response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",  # Use "gpt-3.5-turbo" or "gpt-4" if available
-                messages=[{"role": "user", "content": prompt}],
-                max_tokens=200,
-                temperature=0.7,
-            )
-            reply = response['choices'][0]['message']['content'].strip()
+            response = client.chat.completions.create(model="gpt-4o-mini",  # Use "gpt-4" if available and you have access
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=150,
+            temperature=0.7)
+            reply = response.choices[0].message.content.strip()
         except Exception as e:
             print(f"Error during API call: {e}")
             reply = "I'm sorry, I can't answer that right now."

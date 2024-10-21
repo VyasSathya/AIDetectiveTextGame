@@ -1,3 +1,5 @@
+# game_world.py
+
 from character import Character
 from location import Location
 from clue import Clue
@@ -145,7 +147,7 @@ class GameWorld:
                 "actions": "Carries a stress ball, which she squeezes during tense situations. Keeps her office tidy and decorated with motivational quotes.",
                 "relationships": {
                     "Jonathan Reed": "Professional relationship strained by ethical conflicts.",
-                                        "Dr. Evelyn Hartman": "Collaborates on team management and staff well-being."
+                    "Dr. Evelyn Hartman": "Collaborates on team management and staff well-being."
                 },
                 "motive": "Disagreed with Jonathan’s handling of the harassment complaint. Felt morally conflicted and under pressure to compromise her principles.",
                 "alibi": "Security cameras confirm she was in her office from 7:50 PM to 8:40 PM without leaving.",
@@ -237,6 +239,8 @@ class GameWorld:
         return room_assignments.get(character_name, None)
 
     def setup_clues(self):
+        # Define clues and add them to their respective locations
+
         # Clue 1: Marcus's Watch
         clue_watch = Clue(
             description="An expensive watch stopped at 8:12 PM, found near the CEO's office.",
@@ -333,22 +337,22 @@ class GameWorld:
         )
         self.locations["Security Office"].add_clue(clue_nina_alibi)
 
-        def investigate_location(self):
-            # Allow the player to choose a location to investigate
-            print("\nAvailable locations to investigate:")
-            for idx, location_name in enumerate(self.locations.keys()):
-                print(f"{idx + 1}. {location_name}")
-            choice = input("Enter the number of the location you want to investigate: ")
-            if choice.isdigit():
-                choice = int(choice) - 1
-                if 0 <= choice < len(self.locations):
-                    location_name = list(self.locations.keys())[choice]
-                    location = self.locations[location_name]
-                    self.explore_location(location)
-                else:
-                    print("Invalid choice.")
+    def investigate_location(self):
+        # Allow the player to choose a location to investigate
+        print("\nAvailable locations to investigate:")
+        for idx, location_name in enumerate(self.locations.keys()):
+            print(f"{idx + 1}. {location_name}")
+        choice = input("Enter the number of the location you want to investigate: ")
+        if choice.isdigit():
+            choice = int(choice) - 1
+            if 0 <= choice < len(self.locations):
+                location_name = list(self.locations.keys())[choice]
+                location = self.locations[location_name]
+                self.explore_location(location)
             else:
-                print("Invalid input.")
+                print("Invalid choice.")
+        else:
+            print("Invalid input.")
 
     def explore_location(self, location):
         print(f"\nInvestigating {location.name}...")
@@ -383,9 +387,9 @@ class GameWorld:
                 character = self.characters[choice]
                 self.initiate_dialogue(character)
             else:
-                print("Invalid choice.")
+                print("Invalid choice. Please try again.")
         else:
-            print("Invalid input.")
+            print("Invalid input. Please enter a number corresponding to the character.")
 
     def initiate_dialogue(self, character):
         print(f"\nYou are now talking to {character.name}.")
