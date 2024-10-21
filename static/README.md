@@ -15,4 +15,4 @@ A mystery-solving game where agents act autonomously, clues are generated, and t
 - Start the game:
 
   ```bash
-  python3 main.py -run
+  python3 game.py

@@ -3,8 +3,6 @@ import game_world as world
 
 # dialogue.py
 
-# dialogue.py
-
 class Dialogue:
     def __init__(self, agent, player, world):
         self.agent = agent

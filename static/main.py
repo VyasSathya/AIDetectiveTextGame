@@ -8,10 +8,6 @@ from dialogue import Dialogue
 
 MAX_TURNS = 10
 
-# main.py
-
-# main.py
-
 def interrogate(world, storyteller):
     print("\nWho would you like to interrogate?")
     for idx, agent in enumerate(world.agents):
