@@ -1,18 +1,19 @@
-# Mystery Game
+# Mystery Game: suspect simulation
 
-## Description
+A Python terminal prototype with helpful and misleading agents, a clue notebook, suspect elimination, and a ten-interrogation turn limit.
 
-A mystery-solving game where agents act autonomously, clues are generated, and the player can use a notebook to cross off suspects.
+From the repository root, run:
 
-## Installation
+```sh
+python static/main.py -run
+```
 
-1. Clone this repository to your local machine.
-2. Ensure you have Python 3 installed.
-3. Navigate to the project directory.
+Alternatively, from this directory:
 
-## Running the Game
+```sh
+python main.py -run
+```
 
-- Start the game:
+Use the numbered terminal choices to interrogate suspects, review the notebook, cross off suspects, or solve the crime. Python 3 is required; this prototype uses the standard library and requires no API key.
 
-  ```bash
-  python3 game.py
+See the [repository README](../README.md) for the separate predefined-mystery prototype and code map.
